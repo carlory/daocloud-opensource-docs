@@ -22,7 +22,7 @@ Kubernetes v1.31：X[](./kubernetes-1.31.png)
 
 发布团队用这样的名称来感谢来自世界各地、各行各业的数千人一起构建出了 Kubernetes 社区及其生态，并祝愿每一位构建 Kubernetes、发布 Kubernetes、保持 Kubernetes 集群健壮在线的所有人，希望大家能像主题标志里的「furries（毛茸茸）」和她家里的猫一样生活幸福，永远可爱。 -->
 
-让我们庆祝本次 v1.31 的发布，感谢社区伙伴在过去的里程碑中所作出的努力和贡献。和发布团队一样，我们也祝愿大家能在社区里找到属于自己的位置，一起构建更好的 Kubernetes 世界。
+让我们庆祝本次 v1.31 的发布，感谢社区伙伴在本次的里程碑中所作出的努力和贡献。和发布团队一样，我们也祝愿大家能在社区里找到属于自己的位置，一起构建更好的 Kubernetes 世界。
 
 ## GA 和稳定的功能
 
@@ -34,7 +34,7 @@ GA 全称 General Availability，即正式发布。Kubernetes 的进阶路线通
 - [KEP-4009 设备插件的 API 添加对 CDI 设备的支持, 允许设备插件提供方使用 CDI 定义容器化环境所需的修改](https://kep.k8s.io/4009)
 - [KEP-0024 AppArmor 支持](https://kep.k8s.io/24)
 - [KEP-3017 PDB 添加对不健康的 Pod 驱逐策略的支持, 通过用户提供的配置信息, 来防止被保护的应用程序受到不可用和服务中断的影响](https://kep.k8s.io/3017)
-- [KEP-3329 Job 添加指定处理失败 Pod 的策略的支持, 以终止或重试作业](https://kep.k8s.io/3329)
+- [KEP-3329 扩展了 Job 的字段，以配置用于处理 Pod 故障的作业策略。它允许用户确定由基础结构错误引起的某些 pod 故障，并在不增加对 backoffLimit 的计数器的情况下重试它们。此外，它还允许用户确定由软件错误引起的某些 pod 故障，并提前终止关联的作业](https://kep.k8s.io/3329)
 - [KEP-3715 允许改变 Indexed 类 Job 的 spec.completions, 前提是更新后的值等于 spec.parallelism](https://kep.k8s.io/3715)
 - [KEP-3335 控制 StatefulSet 启动副本序号, 允许在不中断底层应用程序的情况下迁移 StatefulSet](https://kep.k8s.io/3335)
 - [KEP-2185 ReplicaSet 控制器的缩减 Pod 受害者选择算法的随机方法，以减轻故障域之间的 ReplicaSet 不平衡](https://kep.k8s.io/2185)
@@ -88,7 +88,7 @@ Beta 阶段的功能是指那些已经经过 Alpha 阶段的功能, 且在 Beta 
 
 `--max-allowable-numa-nodes` 是一个新的 kubelet 配置选项，用于配置 TopologyManager 中的 `maxAllowableNUMANodes` 的值。默认情况下，`maxAllowableNUMANodes` 的值为 8。这个值是在 4 年前作为权宜之计添加的，用于缓解在尝试枚举可能的 NUMA 关联并生成其提示时发生的状态爆炸。
 
-通过使此设置可配置，我们使用户能够在适当时增加此限制。管理员现在可以允许具有 8 个以上 NUMA 节点的节点在启用 TopologyManager 的情况下运行。当然, 它会减慢节点上的 pod 准入/启动时间, 这是因为 kubelet 的 TopoolgyManager 在决定 cpu 和设备可以以对齐方式分配到哪里时需要考虑更多组合。该功能在节点级别, 减速仅影响配置了该功能的节点，不会对集群产生任何影响。
+通过使此设置可配置，我们使用户能够在适当时增加此限制。管理员现在可以允许具有 8 个以上 NUMA 节点的节点在启用 TopologyManager 的情况下运行。当然, 它会减慢节点上的 Pod 准入/启动时间, 这是因为 kubelet 的 TopoolgyManager 在决定 cpu 和设备可以以对齐方式分配到哪里时需要考虑更多组合。该功能在节点级别, 减速仅影响配置了该功能的节点，不会对集群产生任何影响。
 
 ## 进入 Alpha 阶段的功能
 
@@ -178,7 +178,7 @@ spec:
 
 2024 年 8 月 21 日, 香港将举办为期三天的 [KubeCon + CloudNativeCon + Open Source Summit + AI_dev China 2024](https://events.linuxfoundation.org/kubecon-cloudnativecon-open-source-summit-ai-dev-china/) 盛会, 以下是我司 Kubernetes 社区相关的几个主题：
 
-- 【Kubernetes 子项目 KWOK】主论坛演讲： 世明 KWOK 主题
+- 【Kubernetes 子项目 KWOK】主论坛演讲：支持在Kubernetes中使用KWOK进行大规模和可靠性测试 - Yuan Chen, NVIDIA & Shiming Zhang, DaoCloud
 - 【Kubernetes 子项目 Kubespray】Kubespray大放异彩：在Kubernetes中为LLM和RAG部署裸金属服务 - Kay Yan, DaoCloud & Alan Leung, Equinix
 - 【Kubernetes 维护者主题】Kubernetes维护者圆桌：十年演变与未来趋势 - Paco Xu & Mengjiao Liu, DaoCloud; Qiming Teng, Freelance; Klaus Ma, Nvidia; Pengfei Ni, Microsoft
 
